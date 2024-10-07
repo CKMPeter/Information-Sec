@@ -1,3 +1,5 @@
+# Link to GitHub: https://github.com/DominateProbabilitywithconcent/InsecLabs/tree/main
+
 # Lab FireWall submission.
 
 # A. Setup rules on router to block all access into it except __ping__.
