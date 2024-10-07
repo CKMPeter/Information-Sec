@@ -47,13 +47,13 @@
  ```sh
     telnet 10.9.0.254
  ```
- ![alt text](SecLabImages/tenetrouter.png)<br>
+ ![alt text](SecLab/tenetrouter.png)<br>
  => Block the access to router from outsider computer.<br>
  3. Try curl to router.
    ```sh
     curl http://10.9.0.254
  ```
-  ![alt text](SecLabImages/curlrouter.png)<br>
+  ![alt text](SecLab/curlrouter.png)<br>
  => Also blocked.<br>
 
 # B. Setup rules on router to prevent computers on subnet 10.9.0.0/24 from accessing the internal web server (iweb)
@@ -72,7 +72,7 @@ Access to ***outsider*** virtual computer.<br>
  ```sh 
  curl http://127.16.10.110 
  ```
-  ![alt text](SecLabImages/curliweb.png)<br>
+  ![alt text](SecLabs/curliweb.png)<br>
   => Access is blocked.
 # C. Setup rules on router to stop computers on subnet 172.16.10.0/24 from accessing the badsite.
 Set more rules to prevent htttps, https port from computers on subnet 172.16.10.0/24.<br>
@@ -87,6 +87,6 @@ Set more rules to prevent htttps, https port from computers on subnet 172.16.10.
      docker exec -it inner-172.16.10.100 /bin/bash
  ```
  Try curl to get html file from badsite 10.9.0.10.<br>
- ![alt text](SecLabImages/curlbadsite.png)<br>
+ ![alt text](SecLab/curlbadsite.png)<br>
  => Access is blocked.<br>
 
