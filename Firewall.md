@@ -3,7 +3,7 @@
 # A. Setup rules on router to block all access into it except __ping__.
 
  Open cmd and use command __docker ps__ to view all currently running docker container.<br> <br>
-  ![alt text](SecLabImages/firewallcontainer.png)<br>
+  ![alt text](SecLab/firewallcontainer.png)<br>
  Access to ***router*** container. This is where most of the modification will happen.<br>
  Command used:
  ```sh
@@ -17,7 +17,7 @@
     iptables -S # Check rules and their order on router.
  ```
 
-  ![alt text](SecLabImages/routerrules.png)<br>
+  ![alt text](SecLab/routerrules.png)<br>
   Usually, we will need to use command:
   ```sh
   iptables -P INPUT DROP
@@ -30,7 +30,7 @@
   ```
  This command allows incoming ICMP echo requests or ping to be accepted by the firewall.<br>
  Check the rules currently on the router.<br>
- ![alt text](SecLabImages/checkrules1.png)<Br>
+ ![alt text](SecLab/checkrules1.png)<Br>
  ### Result:
  Access to ***outsider*** virtual computer.<br>
   ```sh
@@ -40,7 +40,7 @@
  ```sh
      ping 10.9.0.254
  ```
- ![alt text](SecLabImages/OtoR.png)<br>
+ ![alt text](SecLab/OtoR.png)<br>
  => Ping traffic still works.<br>
 
  2. Try telnet to router.
