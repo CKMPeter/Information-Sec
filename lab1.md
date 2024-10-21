@@ -1,5 +1,7 @@
 # Lab#1: Buffer Overflow
 
+# By: Cao Khải Minh (https://github.com/CKMPeter)
+
 # Task 1: Stack smashing by memory overwritten
 
 ## 1.1. bof1.c 
