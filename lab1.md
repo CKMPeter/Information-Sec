@@ -40,7 +40,7 @@ In order to hack this program, we need to see its vulnerabilities first:<br>
  ![2](./SecLab/bof2increaseinput.png)<br>
  The value of 'check' variable is now __0x403000a__ which triggers __'You are on the right way!"__ message.<br>
  Last part, we just need to input 40 characters again but this time we add the return address __0xdeadbeef__
- ![3](./SecLabImages/bof2result.png)<br>
+ ![3](./SecLab/bof2result.png)<br>
 
 ## 1.3. bof3.c
 
