@@ -1,4 +1,4 @@
-# Lab#1: Buffer Overflow
+# Lab 1: Buffer Overflow
 
 # By: Cao Khải Minh (https://github.com/CKMPeter)
 
