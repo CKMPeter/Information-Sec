@@ -54,7 +54,7 @@ Check Alice's balance.<br>
 These strings are unpredictable enough while tieing with user's session. Potential candidates as a secret key <br>
 ![a](./SecLab/Screenshot%202024-10-21%20010512.png)<br>
  Then, Add __<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">__ into the html part of __transfer__ function to start deploying.<br>
-![a](./SecLab/Screenshot%202024-10-2120004909.png)<br>
+![a](./SecLab/Screenshot%202024-10-21004909.png)<br>
 Result when trying to attack via hideen_form.html file:<br>
 ![a](./SecLab/Screenshot%202024-10-21%20011220.png)<br>
  
