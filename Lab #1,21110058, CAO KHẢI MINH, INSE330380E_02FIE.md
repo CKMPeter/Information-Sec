@@ -58,50 +58,6 @@ nasm -f elf32 -o lab1.o lab1.nasm
 ```sh
 ld -m elf_i386 -o lab1 lab1.o
 ```
-
-</br>
-
-#### c. Generate the `shellcode` from the executable:
-
-```sh
-objdump -d lab1 | grep '[0-9a-f]:' | grep -oP '\s\K[0-9a-f]+' | tr -d '\n' | sed 's/\(..\)/\\x\1/g'
-```
-
-**`objdump -d attackCode`**:
-
-- Disassembles the binary file (`attackCode`) and shows its assembly instructions along with their corresponding machine code (opcode).
-
-**`grep '[0-9a-f]:'`**:
-
-- Filters out the lines from `objdump` output that contain opcodes (which are hexadecimal values) by looking for lines that have a hexadecimal number followed by a colon (`:`). These are typically the lines with the memory addresses and opcodes.
-
-**`grep -oP '\s\K[0-9a-f]+'`**:
-
-- This command extracts the hexadecimal opcodes from the filtered lines using a regular expression.
-
-- ```sh
-  \s\K[0-9a-f]+
-  ```
-
-  `\s`: Looks for a space before the opcodes.
-
-  `\K`: Ignores everything before the opcodes (the memory addresses).
-
-  `[0-9a-f]+`: Matches one or more hexadecimal characters (i.e., the machine code).
-
-**`sed 's/\(..\)/\\x\1/g'`**:
-
-- Uses `sed` (stream editor) to format the opcodes as shellcode by adding `\x` before each byte.
-- `s/\(..\)/\\x\1/g`: Matches every two hexadecimal characters (which make up a byte) and adds `\x` before them.
-
-</br>
-
-#### d. Total summary of process:
-
-![image-20241104092251134](./SecLab/image-20241104092251134.png)
-
-after running the `objdump` command you will get the shellcode to inject into the vuln program.
-
 </br>
 
 ## III. EXECUTE THE ATTACK:
