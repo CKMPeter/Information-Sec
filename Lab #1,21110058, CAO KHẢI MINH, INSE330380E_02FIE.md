@@ -15,7 +15,7 @@
 ```sh
 nano vuln.c
 ```
-![image-20241104091628712](C:\Users\Admin\AppData\Roaming\Typora\typora-user-images\image-20241104091628712.png)<br>
+![image-20241104091628712](./SecLab/image-20241104091628712.png)<br>
 
 After which use `crtl` +` o` to save ad `crtl`+`x` to exit.
 
