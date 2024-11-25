@@ -10,7 +10,7 @@ then veryfing at receiving side.
 using: `ifconfig` on the ubuntu virtual machine to get the ip:
 ![image](https://github.com/user-attachments/assets/4e3072e3-6430-4aee-9e02-5a14e2ef8cb2)</br>
 
-1. Prepare a text file, in this case i call it file.text:
+1. Prepare a text file, in this case i call it file.text: </br>
 ![image](https://github.com/user-attachments/assets/d6fa50be-19e0-4471-baa1-ad856e19c5fe)</br>
 2. Generate a SHA-256 hash of the file:
 using the cmd: ```openssl dgst -sha256 -binary file.txt > file.txt.hash```
