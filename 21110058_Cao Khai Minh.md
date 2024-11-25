@@ -1,7 +1,7 @@
-#LAB 2:
+# LAB 2:
 by Cao Khải Minh
 
-##task 1:
+## task 1:
 **Question 1**: 
 Conduct transfering a single plaintext file between 2 computers, 
 Using openssl to implementing measures manually to ensure file integerity and authenticity at sending side, 
